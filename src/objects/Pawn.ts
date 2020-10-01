@@ -25,46 +25,37 @@ export class Pawn extends Phaser.GameObjects.Image {
 		this.x -= 100;
 	}
 
-	private moveNorthEast() {
-		this.moveNorth();
-		this.moveEast();
-	}
-
-	private moveNorthWest() {
-		this.moveNorth();
-		this.moveWest();
-	}
-
-	private moveSouthEast() {
-		this.moveSouth();
-		this.moveEast();
-	}
-
-	private moveSouthWest() {
-		this.moveSouth();
-		this.moveWest();
-	}
-
 	private updatePawn(pointer, pTilemap): void {
-		let normalizedPx = Math.floor(pointer?.x / pTilemap?.tileWidth);
-		let normalizedPy = Math.floor(pointer?.y / pTilemap?.tileHeight);
+		let normalizedPx = Math.floor(pointer.x / pTilemap.tileWidth);
+		let normalizedPy = Math.floor(pointer.y / pTilemap.tileHeight);
 
-		if (normalizedPx === this.col + 1) {
-			this.moveEast();
-		} else if (normalizedPx === this.col - 1) {
-			this.moveWest();
-		} else if(normalizedPy === this.line + 1) {
+		if (normalizedPy === this.line + 1 && normalizedPx === this.col) {
 			this.moveSouth();
-		} else if (normalizedPy === this.line - 1) {
+
+		} else if (normalizedPy === this.line - 1 && normalizedPx === this.col) {
 			this.moveNorth();
-		} else if (normalizedPx === this.col + 1 && normalizedPy === this.line + 1) {
-			this.moveSouthEast();
+
+		} else if (normalizedPx === this.col + 1 && normalizedPy === this.line) {
+			this.moveEast();
+
+		} else if (normalizedPx === this.col - 1 && normalizedPy === this.line) {
+			this.moveWest();
+
 		} else if (normalizedPx === this.col - 1 && normalizedPy === this.line - 1) {
-			this.moveNorthWest();
-		} else if (normalizedPx === this.col + 1 && normalizedPy === this.line - 1) {
-			this.moveNorthEast();
+			this.moveNorth();
+			this.moveWest();
+
 		} else if (normalizedPx === this.col - 1 && normalizedPy === this.line + 1) {
-			this.moveSouthWest();
+			this.moveSouth();
+			this.moveWest();
+
+		} else if (normalizedPx === this.col + 1 && normalizedPy === this.line - 1) {
+			this.moveNorth();
+			this.moveEast();
+
+		} else if (normalizedPx === this.col + 1 && normalizedPy === this.line + 1) {
+			this.moveSouth();
+			this.moveEast();
 		}
 	}
 
