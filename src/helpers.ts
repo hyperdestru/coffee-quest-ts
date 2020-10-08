@@ -1,5 +1,8 @@
 import * as Phaser from 'phaser';
 
+/**
+ * Should put this inside a class
+ */
 
 /**
  * Return the width of the current scene.
@@ -55,7 +58,7 @@ export const loadFile = (pFilePath: string): string => {
  * @param pFilePath 
  */
 export const loadStrings = (pFilePath: string): string[][] => {
-	let rawGrid = this.loadFile(pFilePath);
+	let rawGrid = loadFile(pFilePath);
 	return rawGrid.split('\n').map(item => item.split(''));
 }
 
