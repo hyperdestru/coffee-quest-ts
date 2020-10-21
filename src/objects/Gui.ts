@@ -52,8 +52,14 @@ export class Gui {
 				params.scene.sound.stopAll();
 			}
 
-			params.scenePlugin.start(params.newSceneKey, params.sceneData);
+			// Trigger fade-out to black
+			params.scene.cameras.main.fadeOut(1000,0,0,0);
 
+			// When triggered fade-out is finished then we start the new scene
+			params.scene.cameras.main.once(
+				Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, 
+				() => params.scenePlugin.start(params.newSceneKey, params.sceneData)
+			);
 		});
 	}
 
