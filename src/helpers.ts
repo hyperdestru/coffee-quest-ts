@@ -62,13 +62,12 @@ export const loadStrings = (pFilePath: string): string[][] => {
 	return rawGrid.split('\n').map(item => item.split(''));
 }
 
-
 export const COLORS = {
-	customBlue: { string: '#4346f9', hex: 0x4346f9 },
-	customGreen: { string:  '#76ea64', hex: 0x76ea64 },
-	vibrantGreen: { string: '#25f945', hex: 0x25f945 },
-	customRed: { string: '#ea2d23', hex: 0xea2d23 },
-	white: { string: '#ffffff', hex: 0xffffff }
+	customBlue: 	{ string: '#4346f9', hex: 0x4346f9 },
+	customGreen: 	{ string: '#76ea64', hex: 0x76ea64 },
+	vibrantGreen: 	{ string: '#25f945', hex: 0x25f945 },
+	customRed: 		{ string: '#ea2d23', hex: 0xea2d23 },
+	white: 			{ string: '#ffffff', hex: 0xffffff }
 }
 
 // Note -- we can add multiple keys at once : 
