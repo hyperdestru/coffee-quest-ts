@@ -1,13 +1,12 @@
-import { Character } from "./Character";
+import { Character } from "./Character"
 
-export class Hero extends Character {
+export class Hero extends Character 
+{
+	private coins: number
+	private currentProgression: object
 
-	private coins: number;
-	private currentProgression: object;
-
-	constructor(params: {
-		name: string;
-	}) {
-		super(params.name);
+	constructor(params: { name: string }) 
+	{
+		super(params.name)
 	}
 }

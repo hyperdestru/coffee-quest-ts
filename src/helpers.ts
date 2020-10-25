@@ -1,4 +1,4 @@
-import * as Phaser from 'phaser';
+import * as Phaser from 'phaser'
 
 /**
  * Should put this inside a class
@@ -10,9 +10,8 @@ import * as Phaser from 'phaser';
  * @param scene
  */
 export const getGameWidth = (scene: Phaser.Scene) => {
-	return scene.game.scale.width;
-};
-
+	return scene.game.scale.width
+}
 
 /**
  * Return the height of the current scene.
@@ -20,34 +19,33 @@ export const getGameWidth = (scene: Phaser.Scene) => {
  * @param scene
  */
 export const getGameHeight = (scene: Phaser.Scene) => {
-	return scene.game.scale.height;
-};
-
+	return scene.game.scale.height
+}
 
 /**
  * Load a file in ajax and return its response text.
  * @param pFilePath Path to the desired file
  */
 export const loadFile = (pFilePath: string): string => {
-	let rawFile = new XMLHttpRequest();
-	let result: string;
+	let rawFile = new XMLHttpRequest()
+	let result: string
 
 	rawFile.onerror = function() {
-		console.log("Impossible to load file.");
+		console.log("Impossible to load file.")
 	}
 
 	rawFile.onreadystatechange = function() {
 		if (rawFile.readyState === 4) {
 			if (rawFile.status === 200 || rawFile.status === 0) {
-				result = rawFile.responseText;
+				result = rawFile.responseText
 			}
 		}
 	}
 
-	rawFile.open("GET", pFilePath, false);
-	rawFile.send(null);
+	rawFile.open("GET", pFilePath, false)
+	rawFile.send(null)
 
-	return result;
+	return result
 }
 
 
@@ -58,8 +56,8 @@ export const loadFile = (pFilePath: string): string => {
  * @param pFilePath 
  */
 export const loadStrings = (pFilePath: string): string[][] => {
-	let rawGrid = loadFile(pFilePath);
-	return rawGrid.split('\n').map(item => item.split(''));
+	let rawGrid = loadFile(pFilePath)
+	return rawGrid.split('\n').map(item => item.split(''))
 }
 
 export const COLORS = {

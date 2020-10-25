@@ -1,11 +1,14 @@
-export class Character {
-	private name: string;
+export class Character 
+{
+	private name: string
 	
-	constructor(pName: string) {
-		this.name = pName;	
+	constructor(pName: string) 
+	{
+		this.name = pName	
 	}
 
-	speak() {
+	speak() 
+	{
 		// ...
 	}
 }
