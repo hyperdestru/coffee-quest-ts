@@ -1,12 +1,12 @@
-import { Character } from "./Character"
+/** @format */
 
-export class Hero extends Character 
-{
-	private coins: number
-	private currentProgression: object
+import { Character } from "./Character";
 
-	constructor(params: { name: string }) 
-	{
-		super(params.name)
-	}
+export class Hero extends Character {
+    private coins: number;
+    private currentProgression: object;
+
+    constructor(params: { name: string }) {
+        super(params.name);
+    }
 }

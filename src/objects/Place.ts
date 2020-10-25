@@ -1,23 +1,19 @@
-export class Place 
-{
-	private _name: string
-	private _isRestricted: boolean
+/** @format */
 
-	public get name(): string 
-	{
-		return this._name
-	}
+export class Place {
+    private _name: string;
+    private _isRestricted: boolean;
 
-	public get isRestricted(): boolean 
-	{
-		return this._isRestricted
-	}
+    public get name(): string {
+        return this._name;
+    }
 
-	constructor(params: {
-		name: string
-		isRestricted: boolean
-	}) {
-		this._name = params.name
-		this._isRestricted = params.isRestricted
-	}
+    public get isRestricted(): boolean {
+        return this._isRestricted;
+    }
+
+    constructor(params: { name: string; isRestricted: boolean }) {
+        this._name = params.name;
+        this._isRestricted = params.isRestricted;
+    }
 }

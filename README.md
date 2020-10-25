@@ -1,6 +1,8 @@
+<!-- @format -->
+
 # Coffee Quest
 
-### Our underclass hero is going after the mysterious coffee bean of infinity and a notorious evil corporation. 
+### Our underclass hero is going after the mysterious coffee bean of infinity and a notorious evil corporation.
 
 Made with Phaser 3 + Typescript.
 Phaser : https://phaser.io/

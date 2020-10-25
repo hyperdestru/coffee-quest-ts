@@ -1,15 +1,16 @@
-import * as Phaser from 'phaser'
-import Scenes from './scenes'
+/** @format */
 
-const gameConfig: Phaser.Types.Core.GameConfig = 
-{
-	title: 'Coffee Quest',
-	type: Phaser.AUTO,
-	scale: { width: 900, height: 700 },
-	input: { keyboard: true },
-	dom: { createContainer: true },
-	parent: 'game',
-	scene: Scenes
-}
+import * as Phaser from "phaser";
+import Scenes from "./scenes";
 
-export const game = new Phaser.Game(gameConfig)
+const gameConfig: Phaser.Types.Core.GameConfig = {
+    title: "Coffee Quest",
+    type: Phaser.AUTO,
+    scale: { width: 900, height: 700 },
+    input: { keyboard: true },
+    dom: { createContainer: true },
+    parent: "game",
+    scene: Scenes,
+};
+
+export const game = new Phaser.Game(gameConfig);

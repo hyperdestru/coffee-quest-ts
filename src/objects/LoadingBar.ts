@@ -1,19 +1,18 @@
-import { COLORS } from '../helpers'
+/** @format */
 
-export class LoadingBar 
-{
-	private progressBar: Phaser.GameObjects.Rectangle
-	private progressBox: Phaser.GameObjects.Rectangle
-	private progressBarColor: number
-	private progressBoxColor: number
+import { COLORS } from "../helpers";
 
-	constructor(pScene: Phaser.Scene)
-	{
-		// ...
-	}
+export class LoadingBar {
+    private progressBar: Phaser.GameObjects.Graphics;
+    private progressBox: Phaser.GameObjects.Graphics;
+    private progressBarColor: number;
+    private progressBoxColor: number;
 
-	update() 
-	{
-		// ...
-	}
+    constructor(pScene: Phaser.Scene) {
+        // ...
+    }
+
+    update() {
+        // ...
+    }
 }

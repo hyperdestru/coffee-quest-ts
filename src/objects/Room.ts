@@ -1,23 +1,24 @@
-import { Character } from "./Character"
+/** @format */
 
-export class Room 
-{
-	private name: string
-	private characters: Character[]
-	private theme: Phaser.Sound.BaseSound
-	private background: Phaser.GameObjects.Image
+import { Character } from "./Character";
 
-	constructor(params: {
-		name: string
-		theme: Phaser.Sound.BaseSound
-		background: Phaser.GameObjects.Image
-	}) {
-		this.name = params.name
-		this.theme = params.theme
-		this.background = params.background
-	}
+export class Room {
+    private name: string;
+    private characters: Character[];
+    private theme: Phaser.Sound.BaseSound;
+    private background: Phaser.GameObjects.Image;
 
-	draw() {
-		// ...
-	}
+    constructor(params: {
+        name: string;
+        theme: Phaser.Sound.BaseSound;
+        background: Phaser.GameObjects.Image;
+    }) {
+        this.name = params.name;
+        this.theme = params.theme;
+        this.background = params.background;
+    }
+
+    draw() {
+        // ...
+    }
 }
