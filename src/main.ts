@@ -8,7 +8,7 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     type: Phaser.AUTO,
     scale: { width: 900, height: 700 },
     input: { keyboard: true },
-    dom: { createContainer: true },
+	dom: { createContainer: true },
     parent: "game",
     scene: Scenes,
 };

@@ -1,18 +1,25 @@
 /** @format */
 
-import { COLORS } from "../helpers";
+import { COLORS, getGameHeight, getGameWidth } from "../helpers";
 
-export class LoadingBar {
-    private progressBar: Phaser.GameObjects.Graphics;
-    private progressBox: Phaser.GameObjects.Graphics;
-    private progressBarColor: number;
-    private progressBoxColor: number;
+export class LoadingBar extends Phaser.GameObjects.Rectangle {
+	private maxWidth: number;
 
-    constructor(pScene: Phaser.Scene) {
-        // ...
+    constructor(params: { scene: Phaser.Scene }) {
+        super(
+            params.scene,
+            (getGameWidth(params.scene)/2) - 200,
+            (getGameHeight(params.scene)/2) + 50,
+            0,
+            20,
+            COLORS.customRed.hex
+        );
+
+		this.scene.add.existing(this);
+		this.maxWidth = 400;
     }
 
-    update() {
-        // ...
-    }
+    public update(pProgressValue: number = 0) {
+		this.width += pProgressValue*100;
+	}
 }

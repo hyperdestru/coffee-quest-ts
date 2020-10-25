@@ -67,6 +67,7 @@ export const COLORS = {
     vibrantGreen: { string: "#25f945", hex: 0x25f945 },
     customRed: { string: "#ea2d23", hex: 0xea2d23 },
     white: { string: "#ffffff", hex: 0xffffff },
+    customYellow: { string: "#ffde59", hex: 0xffde59 },
 };
 
 // Note -- we can add multiple keys at once :

@@ -4,22 +4,22 @@ import { getGameWidth, getGameHeight } from "../helpers";
 
 export class Gui {
     public static readonly mainBtnStyle = `width: 128px 
-		height: 48px 
-		font-family: Tahoma, courier 
-		color: #ffde59
-		font-weight: bold
-		font-size: 25px 
-		background-color: #000 
-		border: 3px solid #ffde59`;
+		height: 48px;
+		font-family: Tahoma, courier;
+		color: #ffde59;
+		font-weight: bold;
+		font-size: 25px;
+		background-color: #000;
+		border: 3px solid #ffde59;`;
 
     public static readonly secondaryBtnStyle = `width: 100px 
-		height: 33px 
-		font-family: Grobold, Arial, sans-serif 
-		color: #000000 
-		font-size: 17px 
-		border-radius: 4px
-		background-color: #fff 
-		border: 2px solid #000`;
+		height: 33px;
+		font-family: Grobold, Arial, sans-serif;
+		color: #000;
+		font-size: 17px;
+		border-radius: 4px;
+		background-color: #fff;
+		border: 2px solid #000;`;
 
     /**
      * Create a stylized Button DOM Element with a click event listener attached
@@ -54,11 +54,12 @@ export class Gui {
                 // When triggered fade-out is finished then we start the new scene
                 params.scene.cameras.main.once(
                     Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
-                    () =>
+                    () => {
                         params.scenePlugin.start(
                             params.newSceneKey,
                             params.sceneData
-                        )
+                        );
+                    }
                 );
             });
     }
