@@ -21,21 +21,23 @@ export class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.pack("preload", "assets/pack.json", "preload");
 
         this.loadingBar = new LoadingBar({ scene: this });
 
         this.load.on("progress", (value) => {
-            // console.log(value);
-            // if (value < 1) this.loadingBar.update(value);
+			console.log("progress value : ", value);
+			this.loadingBar.draw(value);
+			this.loadingBar.progressText.setText(`${value*100}%`);
         });
         this.load.on("fileprogress", (file) => {
-            // console.log(file.src);
-            // this.loadingBar.update();
+            console.log("loaded file : ", file.src);
         });
         this.load.on("complete", () => {
-            console.log("complete");
-        });
+			console.log("complete");
+			this.loadingBar.destroy();
+		});
+		
+        this.load.pack("preload", "assets/pack.json", "preload");
     }
 
     create() {
@@ -46,8 +48,8 @@ export class BootScene extends Phaser.Scene {
             getGameWidth(this) / 2,
             getGameHeight(this) / 2.5,
             "bootLogo"
-        );
-
+		);
+		
         Gui.mainBtn({
             scene: this,
             text: "START",
