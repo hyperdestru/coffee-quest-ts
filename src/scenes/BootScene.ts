@@ -25,15 +25,11 @@ export class BootScene extends Phaser.Scene {
         this.loadingBar = new LoadingBar({ scene: this });
 
         this.load.on("progress", (value) => {
-			console.log("progress value : ", value);
 			this.loadingBar.draw(value);
-			this.loadingBar.progressText.setText(`${value*100}%`);
-        });
-        this.load.on("fileprogress", (file) => {
-            console.log("loaded file : ", file.src);
-        });
+			this.loadingBar.progressText.setText((Math.floor(value*100)) + "%");
+		});
+		
         this.load.on("complete", () => {
-			console.log("complete");
 			this.loadingBar.destroy();
 		});
 		
