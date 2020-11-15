@@ -48,17 +48,17 @@ export class LoadingBar {
 		this.barHeight = 30;
 		this.barX = (getGameWidth(this.scene)/2) - (this.barWidth/2);
 		this.barY = (getGameHeight(this.scene)/2) - (this.barHeight/2);
-		this.barColor = COLORS.white.hex;
+		this.barColor = COLORS.customRed.hex;
 		this.barAlpha = 0.8;
 		
 		this.box = this.scene.add.graphics();
 		this.boxWidth = this.barWidth + 10;
 		this.boxHeight = this.barHeight + 10;
 		this.boxX = (getGameWidth(this.scene)/2) - (this.boxWidth/2);
-		this.boxX = (getGameHeight(this.scene)/2) - (this.boxHeight/2);
-		this.boxColor = COLORS.customRed.hex;
-		this.boxAlpha = 1;
-
+		this.boxY = (getGameHeight(this.scene)/2) - (this.boxHeight/2);
+		this.boxColor = COLORS.white.hex;
+		this.boxAlpha = 0.3;
+		
 		this.box.fillStyle(this.boxColor, this.boxAlpha);
 		this.box.fillRect(this.boxX, this.boxY, this.boxWidth, this.boxHeight);
 
@@ -68,7 +68,7 @@ export class LoadingBar {
 			text: "Chargement...",
 			style: {
 				font: '20px monospace',
-				fill: '#ffffff'
+				fill: COLORS.white.string
 			}
 		});
 		this.text.setOrigin(0.5, 0.5);
@@ -79,7 +79,7 @@ export class LoadingBar {
 			text: "0%",
 			style: {
 				font: '18px monospace',
-				fill: '#000000'
+				fill: COLORS.white.string
 			}
 		});
 		this._progressText.setOrigin(0.5, 0.5);
