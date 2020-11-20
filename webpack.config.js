@@ -8,7 +8,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: {
@@ -39,21 +39,26 @@ module.exports = {
 
 	devServer: {
 		contentBase: path.resolve(__dirname, 'dist'),
-		//https: true
 	},
 
 	plugins: [
-		new CopyWebpackPlugin([
-			{
-				from: path.resolve(__dirname, 'index.html'),
-				to: path.resolve(__dirname, 'dist')
-			},
+		new CopyPlugin({
+			patterns: [
+				{
+					from: path.resolve(__dirname, 'index.html'),
+					to: path.resolve(__dirname, 'dist')
+				},
 
-			{
-				from: path.resolve(__dirname, 'assets', '**', '*'),
-				to: path.resolve(__dirname, 'dist')
-			}
-		]),
+				{
+					from: 
+						path.posix.join(path.resolve(__dirname, "assets").replace(/\\/g, "/"),
+						"**".replace(/\\/g, "/"),
+						"*"
+					  ),
+					to: path.resolve(__dirname, 'dist'),
+				}
+			]
+		}),
 
 		new webpack.DefinePlugin({
 			'typeof CANVAS_RENDERER': JSON.stringify(true),

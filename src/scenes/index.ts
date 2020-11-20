@@ -2,7 +2,11 @@
 
 import { BootScene } from "./BootScene";
 import { MenuScene } from "./MenuScene";
-import { GameScene } from "./GameScene";
+import { IntroScene } from "./IntroScene";
 import { OverworldScene } from "./OverworldScene";
 
-export default [BootScene, OverworldScene];
+export default [
+	BootScene,
+	IntroScene,
+	OverworldScene
+];

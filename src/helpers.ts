@@ -66,7 +66,8 @@ export const COLORS = {
     customGreen: { string: "#76ea64", hex: 0x76ea64 },
     vibrantGreen: { string: "#25f945", hex: 0x25f945 },
     customRed: { string: "#ea2d23", hex: 0xea2d23 },
-    white: { string: "#ffffff", hex: 0xffffff },
+	white: { string: "#ffffff", hex: 0xffffff },
+	black: { string: "#000000", hex: 0x000000 },
     customYellow: { string: "#ffde59", hex: 0xffde59 },
 };
 
@@ -91,3 +92,5 @@ export const CONTROLKEYS = {
         },
     },
 };
+
+export const DEFAULT_FONT_FAMILIES = "monospace, Tahoma, Arial";

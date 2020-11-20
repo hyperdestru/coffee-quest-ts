@@ -3,7 +3,6 @@
 import { getGameWidth, getGameHeight } from "../helpers";
 import { Gui } from "../objects/Gui";
 import { LoadingBar } from "../objects/LoadingBar";
-import { parsedStorage } from "../storage";
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
     active: false,
@@ -21,6 +20,7 @@ export class BootScene extends Phaser.Scene {
     }
 
     preload() {
+		this.load.pack("preload", "assets/pack.json", "preload");
 
         this.loadingBar = new LoadingBar({ scene: this });
 
@@ -32,8 +32,6 @@ export class BootScene extends Phaser.Scene {
         this.load.on("complete", () => {
 			this.loadingBar.destroy();
 		});
-		
-        this.load.pack("preload", "assets/pack.json", "preload");
     }
 
     create() {
@@ -51,7 +49,7 @@ export class BootScene extends Phaser.Scene {
             text: "START",
             stopSounds: true,
             scenePlugin: this.scene,
-            newSceneKey: "Overworld",
+            newSceneKey: "Intro",
             sceneData: this.data.getAll(),
         });
     }

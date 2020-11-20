@@ -29,48 +29,27 @@ export class Pawn extends Phaser.GameObjects.Image {
     }
 
     private updatePawn(pointer: Phaser.Input.Pointer, pTilemap: Tilemap): void {
-        let normalizedPx = Math.floor(pointer.x / pTilemap.tileWidth);
-        let normalizedPy = Math.floor(pointer.y / pTilemap.tileHeight);
+        let px = Math.floor(pointer.x / pTilemap.tileWidth);
+        let py = Math.floor(pointer.y / pTilemap.tileHeight);
 
-        if (normalizedPy === this.line + 1 && normalizedPx === this.col) {
+        if (py === this.line + 1 && px === this.col) {
             this.moveSouth();
-        } else if (
-            normalizedPy === this.line - 1 &&
-            normalizedPx === this.col
-        ) {
+        } else if (py === this.line - 1 && px === this.col) {
             this.moveNorth();
-        } else if (
-            normalizedPx === this.col + 1 &&
-            normalizedPy === this.line
-        ) {
+        } else if (px === this.col + 1 && py === this.line) {
             this.moveEast();
-        } else if (
-            normalizedPx === this.col - 1 &&
-            normalizedPy === this.line
-        ) {
+        } else if (px === this.col - 1 && py === this.line) {
             this.moveWest();
-        } else if (
-            normalizedPx === this.col - 1 &&
-            normalizedPy === this.line - 1
-        ) {
+        } else if (px === this.col - 1 && py === this.line - 1) {
             this.moveNorth();
             this.moveWest();
-        } else if (
-            normalizedPx === this.col - 1 &&
-            normalizedPy === this.line + 1
-        ) {
+        } else if (px === this.col - 1 && py === this.line + 1) {
             this.moveSouth();
             this.moveWest();
-        } else if (
-            normalizedPx === this.col + 1 &&
-            normalizedPy === this.line - 1
-        ) {
+        } else if (px === this.col + 1 && py === this.line - 1) {
             this.moveNorth();
             this.moveEast();
-        } else if (
-            normalizedPx === this.col + 1 &&
-            normalizedPy === this.line + 1
-        ) {
+        } else if (px === this.col + 1 && py === this.line + 1) {
             this.moveSouth();
             this.moveEast();
         }

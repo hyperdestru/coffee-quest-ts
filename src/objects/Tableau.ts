@@ -1,0 +1,40 @@
+/** @format */
+
+import { Character } from "./Character";
+import { v4 as uuidv4 } from "uuid";
+import { getGameHeight, getGameWidth } from "../helpers";
+
+export class Tableau {
+    private readonly id: number;
+    private name: string;
+    private characters: Array<Character>;
+    private theme: Phaser.Sound.BaseSound;
+    private background: Phaser.GameObjects.Image;
+    private text: Array<Object>;
+    private scene: Phaser.Scene;
+
+    constructor(params: {
+        scene: Phaser.Scene;
+        name: string;
+        backgroundKey: string;
+        text?: Array<Object>;
+        themeKey?: string;
+        characters?: Array<Character>;
+    }) {
+        this.id = uuidv4();
+        this.scene = params.scene;
+        this.name = params.name;
+        this.characters = params.characters;
+        this.text = params.text;
+
+		this.background = this.scene.add.image(
+			getGameWidth(this.scene)/2, 
+			getGameHeight(this.scene)/2, 
+			params.backgroundKey
+		);
+
+		if (params.themeKey) {
+			this.theme = this.scene.sound.add(params.themeKey);
+		}
+    }
+}

@@ -1,25 +1,53 @@
 /** @format */
 
-import { getGameWidth, getGameHeight } from "../helpers";
+import {
+    getGameWidth,
+    getGameHeight,
+    DEFAULT_FONT_FAMILIES,
+    COLORS,
+} from "../helpers";
 
 export class Gui {
-    public static readonly mainBtnStyle = `width: 128px 
+    public static readonly mainBtnStyle = `
+		width: 128px; 
 		height: 48px;
-		font-family: Tahoma, courier;
-		color: #ffde59;
 		font-weight: bold;
 		font-size: 25px;
-		background-color: #000;
-		border: 3px solid #ffde59;`;
+		font-family: ${DEFAULT_FONT_FAMILIES};
+		color: ${COLORS.customYellow.string};
+		background-color: ${COLORS.black.string};
+		border: 3px solid ${COLORS.customYellow.string};
+	`;
 
-    public static readonly secondaryBtnStyle = `width: 100px 
+    public static readonly secondaryBtnStyle = `
+		width: 100px;
 		height: 33px;
-		font-family: Grobold, Arial, sans-serif;
-		color: #000;
 		font-size: 17px;
 		border-radius: 4px;
-		background-color: #fff;
-		border: 2px solid #000;`;
+		color: ${COLORS.black.string};
+		font-family: ${DEFAULT_FONT_FAMILIES};
+		background-color: ${COLORS.white.string};
+		border: 2px solid ${COLORS.black.string};
+	`;
+
+	public static readonly mainTitleStyle = `
+		font-size: 40px;
+		color: ${COLORS.white.string};
+		font-family: ${DEFAULT_FONT_FAMILIES};
+	`;
+
+	public static readonly secondaryTitleStyle = `
+		font-size: 30px 
+		color: ${COLORS.white.string} 
+		font-family: ${DEFAULT_FONT_FAMILIES}
+	`;
+
+	public static readonly simpleParagraphStyle = `
+		font-size: 20px;
+		text-align: center;
+		color: ${COLORS.white.string};
+		font-family: ${DEFAULT_FONT_FAMILIES};
+	`;
 
     /**
      * Create a stylized Button DOM Element with a click event listener attached
@@ -107,14 +135,15 @@ export class Gui {
             });
     }
 
-    public static title(params: { scene: Phaser.Scene; text: string }): void {
+    public static title(params: { 
+		scene: Phaser.Scene; 
+		text: string;
+	}): void {
         params.scene.add.dom(
             getGameWidth(params.scene) / 2,
             24,
             "h3",
-            `color: #ffffff 
-				font-size: 40px 
-				font-family: Grobold, Arial, sans-serif`,
+            Gui.mainTitleStyle,
             params.text
         );
     }
@@ -129,14 +158,12 @@ export class Gui {
             params.x,
             params.y,
             "h4",
-            `color: #ffffff 
-				font-size: 30px 
-				font-family: Grobold, Arial, sans-serif`,
+            Gui.secondaryTitleStyle,
             params.text
         );
     }
 
-    public static customText(params: {
+    public static simpleParagraph(params: {
         scene: Phaser.Scene;
         x: number;
         y: number;
@@ -146,10 +173,7 @@ export class Gui {
             params.x,
             params.y,
             "p",
-            `color: #ffffff 
-				font-size: 20px 
-				text-align: center 
-				font-family: Grobold, Arial, sans-serif`,
+           	Gui.simpleParagraphStyle,
             params.text
         );
     }
