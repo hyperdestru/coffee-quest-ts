@@ -9,6 +9,12 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
     scale: { width: 900, height: 700 },
     input: { keyboard: true },
 	dom: { createContainer: true },
+	physics: {
+		default: 'arcade',
+		arcade: {
+			debug: true
+		}
+	},
     parent: "game",
     scene: Scenes,
 };

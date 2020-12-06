@@ -1,6 +1,6 @@
 /** @format */
 
-import { getGameWidth, getGameHeight } from "../helpers";
+import { getGameWidth, getGameHeight, COLORS } from "../helpers";
 import { Gui } from "../objects/Gui";
 import { LoadingBar } from "../objects/LoadingBar";
 
@@ -45,12 +45,15 @@ export class BootScene extends Phaser.Scene {
 		);
 		
         Gui.mainBtn({
-            scene: this,
-            text: "START",
-            stopSounds: true,
-            scenePlugin: this.scene,
+			scene: this,
+			x: 400,
+			y: getGameHeight(this)-100,
+			width: 150,
+			height: 35,
+			color: COLORS.customRed.hex,
+			text: "START",
             newSceneKey: "Intro",
             sceneData: this.data.getAll(),
-        });
+		});
     }
 }

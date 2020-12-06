@@ -1,6 +1,5 @@
 Codes texte :
-
-\nxt	=> action joueur texte suivant		("next")
-\clc	=> changement de lieu			("change location")
-\hch	=> hero					("hero character")
-\och	=> autre personnage que le hero 	("other character")
+\nxt	=> action joueur texte suivant			("next")
+\clc	=> changement de lieu					("change location")
+\hch	=> hero									("hero character")
+\och	=> autre personnage que le hero 		("other character")
