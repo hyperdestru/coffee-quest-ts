@@ -1,8 +1,8 @@
 /** @format */
 
 import { getGameWidth, getGameHeight, COLORS } from "../helpers";
-import { Gui } from "../objects/Gui";
 import { LoadingBar } from "../objects/LoadingBar";
+import { MainBtn } from "../prefabs/MainBtn";
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
     active: false,
@@ -44,7 +44,7 @@ export class BootScene extends Phaser.Scene {
             "bootLogo"
 		);
 		
-        Gui.mainBtn({
+        new MainBtn({
 			scene: this,
 			x: 400,
 			y: getGameHeight(this)-100,
