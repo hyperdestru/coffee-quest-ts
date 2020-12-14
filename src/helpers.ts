@@ -94,3 +94,13 @@ export const CONTROLKEYS = {
 };
 
 export const DEFAULT_FONT_FAMILIES = "monospace, Tahoma, Arial";
+
+export const FONT_SIZES = {
+	xsmall: "8px",
+	small: "12px",
+	medium: "18px",
+	large: "24px",
+	xlarge: "32px",
+	big: "64px",
+	giant: "128px"
+}
