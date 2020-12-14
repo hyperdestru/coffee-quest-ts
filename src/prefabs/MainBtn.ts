@@ -1,8 +1,19 @@
 /** @format */
 
-import { COLORS, DEFAULT_FONT_FAMILIES, getGameWidth } from "../helpers";
+import { COLORS, DEFAULT_FONT_FAMILIES, FONT_SIZES } from "../helpers";
 
 export class MainBtn {
+	private scene: Phaser.Scene;
+	private x: number;
+	private y: number;
+	private width: number;
+	private height: number;
+	private color: number;
+	private text: string;
+	private alpha: number;
+	private newSceneKey: string;
+	private sceneData: any;
+
     constructor(params: {
         scene: Phaser.Scene;
         x: number;
@@ -11,40 +22,46 @@ export class MainBtn {
         height: number;
         color: number;
         text: string;
-        alpha?: number;
-        newSceneKey?: string;
-        sceneData?: Object;
+        alpha: number;
+        newSceneKey: string;
+        sceneData: any;
     }) {
-        const box = new Phaser.GameObjects.Rectangle(
-            params.scene,
-            getGameWidth(params.scene) / 2,
-            params.y,
-            params.width,
-            params.height,
-            params.color,
-            params.alpha !== undefined ? params.alpha : 1
-        ).setInteractive();
 
-        box.on(
-            "pointerdown",
-            () => {
-                params.scene.sound.stopAll();
-                params.scene.cameras.main.fadeOut(1000, 0, 0, 0);
-                params.scene.cameras.main.once(
-                    Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE,
-                    () => {
-                        if (params.newSceneKey) {
-                            params.scene.scene.start(
-                                params.newSceneKey,
-                                params.sceneData !== undefined
-                                    ? params.sceneData
-                                    : null
-                            );
-                        }
-                    }
+		this.scene = params.scene;
+		this.x = params.x;
+		this.y = params.y;
+		this.width = params.width;
+		this.height = params.height;
+		this.color = params.color;
+		this.text = params.text;
+		this.alpha = params.alpha;
+		this.newSceneKey = params.newSceneKey;
+		this.sceneData = params.sceneData;
+
+		const box = new Phaser.GameObjects.Rectangle(
+            this.scene,
+            this.x,
+            this.y,
+            this.width,
+            this.height,
+            this.color,
+            this.alpha
+		);
+		
+		box.setInteractive();
+
+        box.on("pointerdown", () => {
+				this.scene.sound.stopAll();
+				
+                this.scene.cameras.main.fadeOut(1000, 0, 0, 0);
+                this.scene.cameras.main.once(
+					Phaser.Cameras.Scene2D.Events.FADE_OUT_COMPLETE, 
+					() => {
+                        this.scene.scene.start(this.newSceneKey, this.sceneData);
+					}
                 );
             },
-            params.scene
+            this.scene
         );
 
         box.on("pointerover", () => {
@@ -52,19 +69,19 @@ export class MainBtn {
         });
 
         box.on("pointerout", () => {
-            box.fillColor = params.color;
+            box.fillColor = this.color;
         });
 
         box.setOrigin(0.5, 0.5);
 
         const text = new Phaser.GameObjects.Text(
-            params.scene,
+            this.scene,
             box.x,
             box.y,
-            params.text,
+            this.text,
             {
                 fontFamily: DEFAULT_FONT_FAMILIES,
-                fontSize: "32px",
+                fontSize: FONT_SIZES.xlarge,
                 color: COLORS.black.string,
                 align: "center",
                 fontStyle: "bold",
@@ -73,8 +90,8 @@ export class MainBtn {
 
         text.setOrigin(0.5, 0.5);
 
-        // TODO : Put box and text inside a container
-        params.scene.add.existing(box);
-        params.scene.add.existing(text);
-    }
+        this.scene.add.existing(box);
+        this.scene.add.existing(text);
+	}
+
 }
