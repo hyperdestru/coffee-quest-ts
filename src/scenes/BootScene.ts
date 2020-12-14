@@ -46,14 +46,15 @@ export class BootScene extends Phaser.Scene {
 		
         new MainBtn({
 			scene: this,
-			x: 400,
+			x: getGameWidth(this)/2,
 			y: getGameHeight(this)-100,
 			width: 150,
 			height: 35,
 			color: COLORS.customRed.hex,
+			alpha: 1,
 			text: "START",
             newSceneKey: "Intro",
-            sceneData: this.data.getAll(),
+            sceneData: this.data.getAll()
 		});
     }
 }
