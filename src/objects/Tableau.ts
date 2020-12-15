@@ -6,18 +6,26 @@ import { getGameHeight, getGameWidth } from "../helpers";
 
 export class Tableau {
     private readonly id: number;
+	private scene: Phaser.Scene;
     private name: string;
     private characters: Array<Character>;
     private theme: Phaser.Sound.BaseSound;
     private background: Phaser.GameObjects.Image;
-    private text: Array<Object>;
-    private scene: Phaser.Scene;
+    private _text: Array<string>;
+	
+	get text(): Array<string> {
+		return this._text;
+	}
+
+	destroy(): void {
+		this.background.destroy();
+	}
 
     constructor(params: {
         scene: Phaser.Scene;
         name: string;
         backgroundKey: string;
-        text?: Array<Object>;
+        text?: Array<string>;
         themeKey?: string;
         characters?: Array<Character>;
     }) {
@@ -25,7 +33,7 @@ export class Tableau {
         this.scene = params.scene;
         this.name = params.name;
         this.characters = params.characters;
-        this.text = params.text;
+        this._text = params.text;
 
 		this.background = this.scene.add.image(
 			getGameWidth(this.scene)/2, 
