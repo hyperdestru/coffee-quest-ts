@@ -17,22 +17,6 @@ export class IntroScene extends Phaser.Scene {
 	private nextBtn: InteractiveBtn;
 	private currentTableau: Tableau;
 	private currentTableauIndex: number;
-	private currentString: string;
-	private currentStringIndex: number;
-
-	private nextString(): string {
-		this.currentStringIndex += 1;
-		this.currentString = this.currentTableau.text[this.currentStringIndex];
-		return this.currentString;
-	}
-
-	private endOfText(): boolean {
-		if (this.currentStringIndex < this.currentTableau.text.length) {
-			return false;
-		} else {
-			return true;
-		}
-	}
 
     constructor() {
 		super(sceneConfig);
@@ -54,9 +38,6 @@ export class IntroScene extends Phaser.Scene {
 	
 		this.currentTableauIndex = 0;
 		this.currentTableau = this.tableaux[this.currentTableauIndex];
-
-		this.currentStringIndex = 0;
-		this.currentString = this.currentTableau.text[this.currentStringIndex];
 		
 		this.textArea = new TextArea({
 			scene: this,
@@ -66,7 +47,7 @@ export class IntroScene extends Phaser.Scene {
 			height: 164,
 			color: COLORS.black.hex,
 			alpha: 0.8,
-			currentString: this.currentString
+			currentString: this.currentTableau.currentString
 		});
 
 		this.nextBtn = new InteractiveBtn({
@@ -77,8 +58,8 @@ export class IntroScene extends Phaser.Scene {
 		});
 
 		this.nextBtn.on("pointerdown", () => {
-			if (!this.endOfText()) {
-				this.textArea.setCurrentString(this.nextString());
+			if (!this.currentTableau.endOfText()) {
+				this.textArea.setCurrentString(this.currentTableau.nextString());
 			}
 		})
 	}

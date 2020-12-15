@@ -11,14 +11,26 @@ export class Tableau {
     private characters: Array<Character>;
     private theme: Phaser.Sound.BaseSound;
     private background: Phaser.GameObjects.Image;
-    private _text: Array<string>;
-	
-	get text(): Array<string> {
-		return this._text;
+	private text: Array<string>;
+	private _currentString: string;
+	private currentStringIndex: number;
+
+	get currentString(): string {
+		return this._currentString;
 	}
 
-	destroy(): void {
-		this.background.destroy();
+	endOfText(): boolean {
+		if (this.currentStringIndex >= this.text.length) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	nextString(): string {
+		this.currentStringIndex += 1;
+		this._currentString = this.text[this.currentStringIndex];
+		return this.currentString;
 	}
 
     constructor(params: {
@@ -33,7 +45,9 @@ export class Tableau {
         this.scene = params.scene;
         this.name = params.name;
         this.characters = params.characters;
-        this._text = params.text;
+		this.text = params.text;
+		this.currentStringIndex = 0;
+		this._currentString = this.text[this.currentStringIndex];
 
 		this.background = this.scene.add.image(
 			getGameWidth(this.scene)/2, 

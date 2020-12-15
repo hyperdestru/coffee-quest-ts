@@ -35,10 +35,7 @@ export class Tilemap {
             Grass: new Place({ name: "the grass", isRestricted: false }),
             City: new Place({ name: "the city", isRestricted: false }),
             Forest: new Place({ name: "the forest", isRestricted: false }),
-            Lighthouse: new Place({
-                name: "the lighthouse",
-                isRestricted: true,
-            }),
+            Lighthouse: new Place({ name: "the lighthouse", isRestricted: true }),
             Pyramid: new Place({ name: "the pyramid", isRestricted: true }),
             Dick: new Place({ name: "the dick", isRestricted: true }),
             Castle: new Place({ name: "the castle", isRestricted: true }),
