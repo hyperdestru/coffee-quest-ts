@@ -2,6 +2,11 @@
 	"preload": {
 		"files": [
 			{
+				"key": "buttonNext",
+				"type": "image",
+				"url": "assets/used-globally/gui/button-next.png"
+			},
+			{
 				"key": "bootLogo",
 				"type": "image",
 				"url": "assets/boot-scene/images/boot-scene-logo.png"
