@@ -3,10 +3,6 @@
 import * as Phaser from "phaser";
 
 /**
- * Should put this inside a class
- */
-
-/**
  * Return the width of the current scene.
  * Which is generally equal to the width of the "screen"/canvas but not always.
  * @param scene
@@ -71,10 +67,6 @@ export const COLORS = {
     customYellow: { string: "#ffde59", hex: 0xffde59 },
 };
 
-// Note -- we can add multiple keys at once :
-// this.keys = this.input.keyboard.addKeys('ENTER,W,A,S,D')
-// And then do : this.keys.ENTER.isDown...
-
 export const CONTROLKEYS = {
     PLAYER: {
         SET1: {
@@ -93,8 +85,22 @@ export const CONTROLKEYS = {
     },
 };
 
+/**
+ * Fixed font family to use across the game :
+ * "Monospace, Tahoma, Arial"
+ */
 export const DEFAULT_FONT_FAMILIES = "monospace, Tahoma, Arial";
 
+/**
+ * Fixed font sizes to use across the game : 
+ * xsmall = 8px, 
+ * small = 12px, 
+ * medium = 18px, 
+ * large = 24px,
+ * xlarge = 32px, 
+ * big = 64px, 
+ * giant = 128px
+ */
 export const FONT_SIZES = {
 	xsmall: "8px",
 	small: "12px",
