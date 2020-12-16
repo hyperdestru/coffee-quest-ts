@@ -2,34 +2,49 @@
 	"preload": {
 		"files": [
 			{
+				"key": "buttonNext",
 				"type": "image",
-				"key": "intro-scene-kitchen",
-				"url": "assets/images/intro-scene/kitchen.png"
+				"url": "assets/used-globally/gui/button-next.png"
 			},
 			{
-				"type": "image",
 				"key": "bootLogo",
-				"url": "assets/images/boot-scene/boot-scene-logo.png"
+				"type": "image",
+				"url": "assets/boot-scene/images/boot-scene-logo.png"
 			},
 			{
-				"type": "audio",
 				"key": "bootTheme",
-				"url": "assets/sounds/boot-scene/boot-scene-theme-2.mp3"
-			},
-			{
-				"type": "image",
-				"key": "overworldHero",
-				"url": "assets/images/overworld-scene/hero.png"
-			},
-			{
-				"type": "image",
-				"key": "overworldMap",
-				"url": "assets/images/overworld-scene/map.png"
-			},
-			{
 				"type": "audio",
+				"url": "assets/boot-scene/sounds/boot-scene-theme-2.mp3"
+			},
+			{
+				"key": "overworldHero",
+				"type": "image",
+				"url": "assets/overworld-scene/images/hero.png"
+			},
+			{
+				"key": "overworldMap",
+				"type": "image",
+				"url": "assets/overworld-scene/images/map.png"
+			},
+			{
 				"key": "overworldTheme",
-				"url": "assets/sounds/overworld-scene/overworld-scene-theme.mp3"
+				"type": "audio",
+				"url": "assets/overworld-scene/sounds/overworld-scene-theme.mp3"
+			},
+			{
+				"key": "101-kitchen-bg",
+				"type": "image",
+				"url": "assets/intro-scene/images/kitchen.png"
+			},
+			{
+				"key": "102-shop-bg",
+				"type": "image",
+				"url": "assets/intro-scene/images/coffee-shop.png"
+			},
+			{
+				"key": "103-livingroom-bg",
+				"type": "image",
+				"url": "assets/intro-scene/images/living-room.png"
 			}
 		]
 	}
