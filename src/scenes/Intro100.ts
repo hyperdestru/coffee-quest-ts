@@ -1,8 +1,6 @@
 /** @format */
 
-import { COLORS } from "../helpers";
 import { Tableau } from "../objects/Tableau";
-import { MainBtn } from "../prefabs/MainBtn";
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
     active: false,
