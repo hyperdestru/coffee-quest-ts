@@ -10,11 +10,20 @@ const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
 };
 
 export class Intro100 extends Phaser.Scene {
-    private currentTableau: Tableau;
-    private tableaux: Tableau[];
+	private currentTableau: Tableau;
+	private currentTableauIndex: number;
+	private tableaux: Tableau[];
+	
+	private endOfTableaux(): boolean {
+		if (this.currentTableauIndex >= this.tableaux.length - 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
-    setCurrentTableau(n: number): void {
-        this.currentTableau = this.tableaux[n - 1];
+    private setCurrentTableau(n: number): void {
+        this.currentTableau = this.tableaux[n];
     }
 
     constructor() {
@@ -57,12 +66,22 @@ export class Intro100 extends Phaser.Scene {
             }),
         ];
 
-        this.setCurrentTableau(1);
+		this.currentTableauIndex = 0;
+		this.setCurrentTableau(this.currentTableauIndex);
     }
 
     create() {
-        this.currentTableau.create();
-    }
-
-    update() {}
+		this.currentTableau.create();
+	}
+	
+	update() {
+		if (this.currentTableau.endOfText() === true) {
+			if (this.endOfTableaux() === false) {
+				this.currentTableauIndex += 1;
+				this.setCurrentTableau(this.currentTableauIndex);
+				this.currentTableau.create();
+				console.log("Current Tableau = ", this.currentTableau);
+			}
+		}
+	}
 }
