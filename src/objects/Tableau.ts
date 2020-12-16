@@ -11,7 +11,6 @@ export class Tableau {
     private scene: Phaser.Scene;
     private key: string;
     private text: Array<string>;
-    private theme: Phaser.Sound.BaseSound;
     private items: Array<InteractiveItem>;
     private characters: Array<Character>;
     private background: Phaser.GameObjects.Image;
@@ -19,10 +18,10 @@ export class Tableau {
     private currentString: string;
     private textArea: TextArea;
     private nextBtn: InteractiveImageButton;
-    private mapBtn: SceneStartButton;
+	private mapBtn: SceneStartButton;
 
     endOfText(): boolean {
-        if (this.currentStringIndex >= this.text.length) {
+        if (this.currentStringIndex >= this.text.length - 1) {
             return true;
         } else {
             return false;
@@ -34,13 +33,6 @@ export class Tableau {
         return this.text[this.currentStringIndex];
     }
 
-    destroy() {
-		this.background.destroy();
-        this.nextBtn.destroy();
-        this.textArea.destroyBoxAndText();
-        this.mapBtn.destroyBoxAndText();
-    }
-
     constructor(params: {
         scene: Phaser.Scene;
         key: string;
@@ -50,14 +42,14 @@ export class Tableau {
     }) {
         this.scene = params.scene;
         this.key = params.key;
-        this.text = params?.text;
-        this.items = params?.items;
-        this.characters = params?.characters;
-        this.currentStringIndex = 0;
-        this.currentString = this.text[this.currentStringIndex];
+        this.text = params.text;
+        this.items = params.items;
+		this.characters = params.characters;
+		this.currentStringIndex = 0;
+		this.currentString = this.text[this.currentStringIndex];
     }
 
-    create() {
+    create() {		
         this.background = this.scene.add.image(
             getGameWidth(this.scene) / 2,
             getGameHeight(this.scene) / 2,
@@ -73,7 +65,7 @@ export class Tableau {
             color: COLORS.black.hex,
             alpha: 0.8,
             currentString: this.currentString,
-		});
+        });
 
         this.nextBtn = new InteractiveImageButton({
             scene: this.scene,
@@ -87,7 +79,7 @@ export class Tableau {
             if (this.endOfText() === false) {
                 this.textArea.currentString = this.nextString();
             }
-        });
+		});
 
         this.mapBtn = new SceneStartButton({
             scene: this.scene,
@@ -103,5 +95,6 @@ export class Tableau {
             alpha: 1,
             newSceneKey: "Overworld",
         });
-    }
+	}
+	
 }
