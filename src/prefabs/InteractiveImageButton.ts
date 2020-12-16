@@ -1,6 +1,6 @@
 /** @format */
 
-export class InteractiveItem extends Phaser.GameObjects.Image {
+export class InteractiveImageButton extends Phaser.GameObjects.Image {
     constructor(params: {
         scene: Phaser.Scene;
         x: number;

@@ -62,10 +62,10 @@ export const COLORS = {
     customGreen: { string: "#76ea64", hex: 0x76ea64 },
     vibrantGreen: { string: "#25f945", hex: 0x25f945 },
     customRed: { string: "#ea2d23", hex: 0xea2d23 },
-	white: { string: "#ffffff", hex: 0xffffff },
-	black: { string: "#000000", hex: 0x000000 },
-	customYellow: { string: "#ffde59", hex: 0xffde59 },
-	grey: { string: "#d3d1d2", hex: 0xd3d1d2 }
+    white: { string: "#ffffff", hex: 0xffffff },
+    black: { string: "#000000", hex: 0x000000 },
+    customYellow: { string: "#ffde59", hex: 0xffde59 },
+    grey: { string: "#d3d1d2", hex: 0xd3d1d2 },
 };
 
 export const CONTROLKEYS = {
@@ -93,21 +93,21 @@ export const CONTROLKEYS = {
 export const DEFAULT_FONT_FAMILIES = "monospace, Tahoma, Arial";
 
 /**
- * Fixed font sizes to use across the game : 
- * xsmall = 8px, 
- * small = 12px, 
- * medium = 18px, 
+ * Fixed font sizes to use across the game :
+ * xsmall = 8px,
+ * small = 12px,
+ * medium = 18px,
  * large = 24px,
- * xlarge = 32px, 
- * big = 64px, 
+ * xlarge = 32px,
+ * big = 64px,
  * giant = 128px
  */
 export const FONT_SIZES = {
-	xsmall: "8px",
-	small: "12px",
-	medium: "18px",
-	large: "24px",
-	xlarge: "32px",
-	big: "64px",
-	giant: "128px"
-}
+    xsmall: "8px",
+    small: "12px",
+    medium: "18px",
+    large: "24px",
+    xlarge: "32px",
+    big: "64px",
+    giant: "128px",
+};

@@ -20,10 +20,10 @@ export class OverworldScene extends Phaser.Scene {
 
     create() {
         this.musicTheme = this.sound.add("overworldTheme");
-		this.musicTheme.play();
-		
-		this.tilemap = new Tilemap({ scene: this });
-		
+        this.musicTheme.play();
+
+        this.tilemap = new Tilemap({ scene: this });
+
         this.pawn = new Pawn({
             scene: this,
             col: 4,

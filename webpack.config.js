@@ -50,11 +50,11 @@ module.exports = {
 				},
 
 				{
-					from: 
+					from:
 						path.posix.join(path.resolve(__dirname, "assets").replace(/\\/g, "/"),
-						"**".replace(/\\/g, "/"),
-						"*"
-					  ),
+							"**".replace(/\\/g, "/"),
+							"*"
+						),
 					to: path.resolve(__dirname, 'dist'),
 				}
 			]

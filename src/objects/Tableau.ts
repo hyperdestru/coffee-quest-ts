@@ -4,8 +4,8 @@ import { Character } from "./Character";
 import { COLORS, FONT_SIZES, getGameHeight, getGameWidth } from "../helpers";
 import { InteractiveItem } from "./InteractiveItem";
 import { TextArea } from "../prefabs/TextArea";
-import { InteractiveBtn } from "../prefabs/InteractiveBtn";
-import { MainBtn } from "../prefabs/MainBtn";
+import { InteractiveImageButton } from "../prefabs/InteractiveImageButton";
+import { SceneStartButton } from "../prefabs/SceneStartButton";
 
 export class Tableau {
     private scene: Phaser.Scene;
@@ -18,13 +18,8 @@ export class Tableau {
     private currentStringIndex: number;
     private currentString: string;
     private textArea: TextArea;
-    private nextBtn: InteractiveBtn;
-
-    nextString(): string {
-        this.currentStringIndex += 1;
-        this.currentString = this.text[this.currentStringIndex];
-        return this.currentString;
-    }
+    private nextBtn: InteractiveImageButton;
+    private mapBtn: SceneStartButton;
 
     endOfText(): boolean {
         if (this.currentStringIndex >= this.text.length) {
@@ -32,11 +27,19 @@ export class Tableau {
         } else {
             return false;
         }
-	}
-	
-	destroy() {
-		this.background.destroy();
-	}
+    }
+
+    nextString(): string {
+        this.currentStringIndex += 1;
+        return this.text[this.currentStringIndex];
+    }
+
+    destroy() {
+        this.background.destroy();
+        this.nextBtn.destroy();
+        this.textArea.destroyBoxAndText();
+        this.mapBtn.destroyBoxAndText();
+    }
 
     constructor(params: {
         scene: Phaser.Scene;
@@ -46,15 +49,15 @@ export class Tableau {
         characters?: Array<Character>;
     }) {
         this.scene = params.scene;
-		this.key = params.key;
-		this.text = params?.text;
+        this.key = params.key;
+        this.text = params?.text;
         this.items = params?.items;
         this.characters = params?.characters;
         this.currentStringIndex = 0;
         this.currentString = this.text[this.currentStringIndex];
     }
 
-    create() {		
+    create() {
         this.background = this.scene.add.image(
             getGameWidth(this.scene) / 2,
             getGameHeight(this.scene) / 2,
@@ -72,7 +75,7 @@ export class Tableau {
             currentString: this.currentString,
         });
 
-        this.nextBtn = new InteractiveBtn({
+        this.nextBtn = new InteractiveImageButton({
             scene: this.scene,
             x: getGameWidth(this.scene) - 42,
             y: getGameHeight(this.scene) - 75,
@@ -80,25 +83,24 @@ export class Tableau {
         });
 
         this.nextBtn.on("pointerdown", () => {
-            if (!this.endOfText()) {
+            if (this.endOfText() === false) {
                 this.textArea.currentString = this.nextString();
             }
-		});
-		
-		new MainBtn({
-			scene: this.scene,
-			x: 76,
-			y: 30,
-			width: 128,
-			height: 35,
-			color: COLORS.black.hex,
-			hoverColor: COLORS.grey.hex,
-			label: "MAP",
-			fontSize: FONT_SIZES.large,
-			fontColor: COLORS.white.string,
-			alpha: 1,
-			newSceneKey: "Overworld"
-		});
-	}
-	
+        });
+
+        this.mapBtn = new SceneStartButton({
+            scene: this.scene,
+            x: 76,
+            y: 30,
+            width: 128,
+            height: 35,
+            color: COLORS.black.hex,
+            hoverColor: COLORS.grey.hex,
+            label: "MAP",
+            fontSize: FONT_SIZES.large,
+            fontColor: COLORS.white.string,
+            alpha: 1,
+            newSceneKey: "Overworld",
+        });
+    }
 }
