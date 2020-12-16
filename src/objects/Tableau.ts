@@ -80,6 +80,7 @@ export class Tableau {
             x: getGameWidth(this.scene) - 42,
             y: getGameHeight(this.scene) - 75,
             textureKey: "buttonNext",
+            hoverColor: COLORS.customRed.hex,
         });
 
         this.nextBtn.on("pointerdown", () => {
@@ -95,7 +96,7 @@ export class Tableau {
             width: 128,
             height: 35,
             color: COLORS.black.hex,
-            hoverColor: COLORS.grey.hex,
+            hoverColor: COLORS.customRed.hex,
             label: "MAP",
             fontSize: FONT_SIZES.large,
             fontColor: COLORS.white.string,
