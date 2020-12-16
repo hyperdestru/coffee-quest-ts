@@ -1,6 +1,6 @@
 /** @format */
 
-import { getGameWidth, getGameHeight, COLORS } from "../helpers";
+import { getGameWidth, getGameHeight, COLORS, FONT_SIZES } from "../helpers";
 import { LoadingBar } from "../objects/LoadingBar";
 import { MainBtn } from "../prefabs/MainBtn";
 
@@ -51,10 +51,12 @@ export class BootScene extends Phaser.Scene {
 			width: 150,
 			height: 35,
 			color: COLORS.customRed.hex,
+			hoverColor: COLORS.customYellow.hex,
 			alpha: 1,
-			text: "START",
-            newSceneKey: "Intro",
-            sceneData: this.data.getAll()
+			label: "START",
+			fontSize: FONT_SIZES.xlarge,
+			fontColor: COLORS.black.string,
+            newSceneKey: "Intro100"
 		});
     }
 }

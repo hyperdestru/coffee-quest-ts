@@ -32,9 +32,19 @@
 				"url": "assets/overworld-scene/sounds/overworld-scene-theme.mp3"
 			},
 			{
-				"key": "intro-scene-kitchen",
+				"key": "101-kitchen-bg",
 				"type": "image",
 				"url": "assets/intro-scene/images/kitchen.png"
+			},
+			{
+				"key": "102-shop-bg",
+				"type": "image",
+				"url": "assets/intro-scene/images/coffee-shop.png"
+			},
+			{
+				"key": "103-livingroom-bg",
+				"type": "image",
+				"url": "assets/intro-scene/images/living-room.png"
 			}
 		]
 	}

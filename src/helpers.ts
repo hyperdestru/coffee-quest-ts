@@ -64,7 +64,8 @@ export const COLORS = {
     customRed: { string: "#ea2d23", hex: 0xea2d23 },
 	white: { string: "#ffffff", hex: 0xffffff },
 	black: { string: "#000000", hex: 0x000000 },
-    customYellow: { string: "#ffde59", hex: 0xffde59 },
+	customYellow: { string: "#ffde59", hex: 0xffde59 },
+	grey: { string: "#d3d1d2", hex: 0xd3d1d2 }
 };
 
 export const CONTROLKEYS = {

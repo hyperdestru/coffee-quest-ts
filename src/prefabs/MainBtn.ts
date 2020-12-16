@@ -4,12 +4,17 @@ import { COLORS, DEFAULT_FONT_FAMILIES, FONT_SIZES } from "../helpers";
 
 export class MainBtn {
 	private scene: Phaser.Scene;
+	private box: Phaser.GameObjects.Rectangle;
+	private text: Phaser.GameObjects.Text;
 	private x: number;
 	private y: number;
 	private width: number;
 	private height: number;
 	private color: number;
-	private text: string;
+	private hoverColor: number;
+	private fontSize: string;
+	private fontColor: string;
+	private label: string;
 	private alpha: number;
 	private newSceneKey: string;
 	private sceneData: any;
@@ -20,11 +25,14 @@ export class MainBtn {
         y: number;
         width: number;
         height: number;
-        color: number;
-        text: string;
+		color: number;
+		hoverColor: number;
+		label: string;
+		fontSize: string;
+		fontColor: string;
         alpha: number;
         newSceneKey: string;
-        sceneData: any;
+        sceneData?: any;
     }) {
 
 		this.scene = params.scene;
@@ -33,12 +41,20 @@ export class MainBtn {
 		this.width = params.width;
 		this.height = params.height;
 		this.color = params.color;
-		this.text = params.text;
+		this.hoverColor = params.hoverColor;
+		this.label = params.label;
+		this.fontSize = params.fontSize;
+		this.fontColor = params.fontColor;
 		this.alpha = params.alpha;
 		this.newSceneKey = params.newSceneKey;
-		this.sceneData = params.sceneData;
 
-		const box = new Phaser.GameObjects.Rectangle(
+		if (params.sceneData) {
+			this.sceneData = params.sceneData;
+		} else {
+			this.sceneData = null;
+		}
+
+		this.box = new Phaser.GameObjects.Rectangle(
             this.scene,
             this.x,
             this.y,
@@ -48,9 +64,9 @@ export class MainBtn {
             this.alpha
 		);
 		
-		box.setInteractive();
+		this.box.setInteractive();
 
-        box.on("pointerdown", () => {
+        this.box.on("pointerdown", () => {
 				this.scene.sound.stopAll();
 				
 				this.scene.cameras.main.fadeOut(1000, 0, 0, 0);
@@ -65,34 +81,34 @@ export class MainBtn {
             this.scene
         );
 
-        box.on("pointerover", () => {
-            box.fillColor = COLORS.customYellow.hex;
+        this.box.on("pointerover", () => {
+            this.box.fillColor = this.hoverColor;
         });
 
-        box.on("pointerout", () => {
-            box.fillColor = this.color;
+        this.box.on("pointerout", () => {
+            this.box.fillColor = this.color;
         });
 
-        box.setOrigin(0.5, 0.5);
+        this.box.setOrigin(0.5, 0.5);
 
-        const text = new Phaser.GameObjects.Text(
+       	this.text = new Phaser.GameObjects.Text(
             this.scene,
-            box.x,
-            box.y,
-            this.text,
+            this.box.x,
+            this.box.y,
+            this.label,
             {
                 fontFamily: DEFAULT_FONT_FAMILIES,
-                fontSize: FONT_SIZES.xlarge,
-                color: COLORS.black.string,
+                fontSize: this.fontSize,
+                color: this.fontColor,
                 align: "center",
-                fontStyle: "bold",
+                fontStyle: "bold"
             }
         );
 
-        text.setOrigin(0.5, 0.5);
+        this.text.setOrigin(0.5, 0.5);
 
-        this.scene.add.existing(box);
-        this.scene.add.existing(text);
+        this.scene.add.existing(this.box);
+        this.scene.add.existing(this.text);
 	}
 
 }

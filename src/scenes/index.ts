@@ -1,12 +1,11 @@
 /** @format */
 
 import { BootScene } from "./BootScene";
-import { MenuScene } from "./MenuScene";
-import { IntroScene } from "./IntroScene";
+import { Intro100 } from "./Intro100";
 import { OverworldScene } from "./OverworldScene";
 
 export default [
 	BootScene,
-	IntroScene,
+	Intro100,
 	OverworldScene
 ];

@@ -11,9 +11,9 @@ export class TextArea {
 	private color: number;
 	private alpha: number;
 	private textPadding: number;
-	private currentString: string;
+	private _currentString: string;
 
-	public setCurrentString(v: string): void {
+	set currentString(v: string) {
 		this.text.setText(v);
 	}
 
@@ -36,7 +36,7 @@ export class TextArea {
 		this.color = params.color;
 		this.alpha = params.alpha;
 		this.textPadding = 10;
-		this.currentString = params.currentString;
+		this._currentString = params.currentString;
 
 		this.box = new Phaser.GameObjects.Rectangle(
             this.scene,
@@ -52,7 +52,7 @@ export class TextArea {
             this.scene,
             this.box.x - this.box.width/2,
             this.box.y - this.box.height/2,
-            this.currentString,
+            this._currentString,
             {
                 fontFamily: DEFAULT_FONT_FAMILIES,
                 fontSize: FONT_SIZES.large,
