@@ -1,5 +1,6 @@
 /** @format */
 
+import { Tilemaps } from "phaser";
 import { Tableau } from "../objects/Tableau";
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
@@ -12,7 +13,6 @@ export class Intro100 extends Phaser.Scene {
     private tableaux: Array<Tableau>;
     private currentTableau: Tableau;
     private currentTableauIndex: number;
-    private launchNextTableau: boolean;
 
     private endOfTableaux(): boolean {
         if (this.currentTableauIndex >= this.tableaux.length) {
@@ -67,13 +67,14 @@ export class Intro100 extends Phaser.Scene {
             }),
         ];
 
-        this.currentTableauIndex = 2;
+        this.currentTableauIndex = 1;
         this.currentTableau = this.tableaux[this.currentTableauIndex];
     }
 
     create() {
-        this.currentTableau.create();
+		this.currentTableau.create();
     }
 
-    update() {}
+    update() {
+	}
 }

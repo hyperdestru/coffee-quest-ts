@@ -35,7 +35,7 @@ export class Tableau {
     }
 
     destroy() {
-        this.background.destroy();
+		this.background.destroy();
         this.nextBtn.destroy();
         this.textArea.destroyBoxAndText();
         this.mapBtn.destroyBoxAndText();
@@ -73,7 +73,7 @@ export class Tableau {
             color: COLORS.black.hex,
             alpha: 0.8,
             currentString: this.currentString,
-        });
+		});
 
         this.nextBtn = new InteractiveImageButton({
             scene: this.scene,
