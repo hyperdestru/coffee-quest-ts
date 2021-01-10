@@ -21,7 +21,7 @@ export class Tableau {
 	private mapBtn: SceneStartButton;
 
     endOfText(): boolean {
-        if (this.currentStringIndex >= this.text.length - 1) {
+        if (this.currentStringIndex > this.text.length - 1) {
             return true;
         } else {
             return false;
@@ -49,7 +49,7 @@ export class Tableau {
 		this.currentString = this.text[this.currentStringIndex];
     }
 
-    create() {		
+    draw() {		
         this.background = this.scene.add.image(
             getGameWidth(this.scene) / 2,
             getGameHeight(this.scene) / 2,
