@@ -1,6 +1,5 @@
 /** @format */
 
-import { Tilemaps } from "phaser";
 import { Tableau } from "../objects/Tableau";
 
 const sceneConfig: Phaser.Types.Scenes.SettingsConfig = {
@@ -13,19 +12,25 @@ export class Intro100 extends Phaser.Scene {
 	private currentTableau: Tableau;
 	private currentTableauIndex: number;
 	private tableaux: Tableau[];
+
+	private initCurrentTableau(): void {
+		this.currentTableauIndex = 0;
+		this.currentTableau = this.tableaux[this.currentTableauIndex];
+	}
+
+	private goToNextTableau(): void {
+		this.currentTableauIndex += 1;
+		this.currentTableau = this.tableaux[this.currentTableauIndex];
+	}
 	
-	private endOfTableaux(): boolean {
+	private isAtLastTableau(): boolean {
 		if (this.currentTableauIndex >= this.tableaux.length - 1) {
 			return true;
 		} else {
 			return false;
 		}
 	}
-
-    private setCurrentTableau(n: number): void {
-        this.currentTableau = this.tableaux[n];
-    }
-
+	
     constructor() {
         super(sceneConfig);
 
@@ -66,21 +71,18 @@ export class Intro100 extends Phaser.Scene {
             }),
         ];
 
-		this.currentTableauIndex = 0;
-		this.setCurrentTableau(this.currentTableauIndex);
+		this.initCurrentTableau();
     }
 
     create() {
-		this.currentTableau.create();
+		this.currentTableau.draw();
 	}
 	
-	update() {
+	update() {		
 		if (this.currentTableau.endOfText() === true) {
-			if (this.endOfTableaux() === false) {
-				this.currentTableauIndex += 1;
-				this.setCurrentTableau(this.currentTableauIndex);
-				this.currentTableau.create();
-				console.log("Current Tableau = ", this.currentTableau);
+			if (!this.isAtLastTableau()) {
+				this.goToNextTableau();
+				this.currentTableau.draw();
 			}
 		}
 	}
